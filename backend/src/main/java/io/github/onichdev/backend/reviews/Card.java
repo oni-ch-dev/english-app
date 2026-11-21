@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 
 @Entity 
 @Table(name = "cards")
-public class Cards {
+public class Card {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ public class Cards {
     @JoinColumn(name = "expression_id")
     private Expression expression;
 
-    private short state;
+    private CardState state;
     private Integer step;
     private Double stability;
     private Double difficulty;
@@ -42,23 +42,17 @@ public class Cards {
     @UpdateTimestamp
     private Instant updatedAt;
 
-    protected Cards() {}
+    protected Card() {}
 
-    public Cards(Expression expression, short state, Integer step, Double stability, Double difficulty, Instant due, Instant lastReview, int reps, int lapses) {
+    public Card(Expression expression) {
         this.expression = expression;
-        this.state = state;
-        this.step = step;
-        this.stability = stability;
-        this.difficulty = difficulty;
-        this.due = due;
-        this.lastReview = lastReview;
-        this.reps = reps;
-        this.lapses = lapses;
+        this.state = CardState.NEW;
+        this.due = Instant.now();
     }
 
     public Long getId() { return id; }
     public Expression getExpression() { return expression; }
-    public short getState() { return state; }
+    public CardState getState() { return state; }
     public Integer getStep() { return step; }
     public Double getStability() { return stability; }
     public Double getDifficulty() { return difficulty; }

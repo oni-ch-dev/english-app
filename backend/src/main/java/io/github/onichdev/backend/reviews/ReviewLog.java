@@ -19,22 +19,22 @@ public class ReviewLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // For the one of Cards, there can be many ReviewLogs 
+    // One card can have many review logs.
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "card_id")
-    private Cards card;
+    private Card card;
 
     private short rating;
     private Instant reviewedAt;
 
     protected ReviewLog() {}
-    public ReviewLog(Cards card, short rating, Instant reviewedAt) {
+    public ReviewLog(Card card, short rating, Instant reviewedAt) {
         this.card = card;
         this.rating = rating;
         this.reviewedAt = reviewedAt;
     }
 
     public Long getId() { return id; }
-    public Cards getCard() { return card; }
+    public Card getCard() { return card; }
     public short getRating() { return rating; }
 }
