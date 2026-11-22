@@ -1,4 +1,4 @@
-package io.github.onichdev.backend.expression;
+package io.github.onichdev.backend.expression.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

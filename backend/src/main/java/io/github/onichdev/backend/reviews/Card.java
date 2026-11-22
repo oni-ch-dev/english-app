@@ -47,6 +47,7 @@ public class Card {
     public Card(Expression expression) {
         this.expression = expression;
         this.state = CardState.NEW;
+        this.step = 0;
         this.due = Instant.now();
     }
 
@@ -60,4 +61,17 @@ public class Card {
     public Instant getLastReview() { return lastReview; }
     public int getReps() { return reps; }
     public int getLapses() { return lapses; }
+
+    public void applyReview(io.github.openspacedrepetition.Card result, boolean forgot){
+        if(forgot && this.state == CardState.REVIEW){
+            this.lapses++;
+        }
+        this.state = FsrsMapper.fromFsrsState(result.getState());
+        this.step = result.getStep();
+        this.stability = result.getStability();
+        this.difficulty = result.getDifficulty();
+        this.due = result.getDue();
+        this.lastReview = result.getLastReview();
+        this.reps++;
+    }
 }

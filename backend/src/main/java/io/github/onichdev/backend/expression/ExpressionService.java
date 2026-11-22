@@ -3,6 +3,8 @@ package io.github.onichdev.backend.expression;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.github.onichdev.backend.expression.dto.CreateExpressionRequest;
+import io.github.onichdev.backend.expression.dto.ExpressionResponse;
 import io.github.onichdev.backend.reviews.Card;
 import io.github.onichdev.backend.reviews.CardRepository;
 

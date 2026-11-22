@@ -37,4 +37,5 @@ public class ReviewLog {
     public Long getId() { return id; }
     public Card getCard() { return card; }
     public short getRating() { return rating; }
+    public Instant getReviewedAt() { return reviewedAt; }
 }

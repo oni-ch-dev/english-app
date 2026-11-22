@@ -1,4 +1,6 @@
-package io.github.onichdev.backend.expression;
+package io.github.onichdev.backend.expression.dto;
+
+import io.github.onichdev.backend.expression.Expression;
 
 public record ExpressionResponse(
     Long id,
