@@ -13,6 +13,19 @@ export type ReviewResult = {
     nextDue: string
 }
 
+export type CreateExpressionInput = {
+    text: string
+    definition?: string
+    example?: string
+}
+
+export type Expression = {
+    id: number
+    text: string
+    definition?: string | null
+    example?: string | null
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
     const res = await fetch(`/api${path}`, {
         headers: { 'Content-Type': 'application/json' },
@@ -30,5 +43,11 @@ export const api = {
         request<ReviewResult>('/reviews', {
             method: 'POST',
             body: JSON.stringify({ cardId, rating })
+        }),
+
+    createExpression: (input: CreateExpressionInput) =>
+        request<Expression>('/expressions', {
+            method: 'POST',
+            body: JSON.stringify(input)
         }),
 }
