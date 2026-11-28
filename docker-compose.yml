@@ -18,7 +18,7 @@ services:
   backend:
     build: ./backend
     environment:
-      SPRInG_DATASOURCE_URL: jdbc:postgresql://db:5432/english_app
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/english_app
       SPRING_DATASOURCE_USERNAME: app
       SPRING_DATASOURCE_PASSWORD: app
     ports:
@@ -26,6 +26,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
 
 volumes:
   db-data:

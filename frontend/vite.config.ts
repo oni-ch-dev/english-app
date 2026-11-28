@@ -7,7 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        // In container env, we use the VITE_PROXY_API_URL
+        // In native, we use localhost:8080 
+        target: process.env.VITE_PROXY_API_URL ?? 'http://localhost:8080',
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
