@@ -8,10 +8,10 @@ function App() {
   const [view, setView] = useState<'review' | 'add'>('review')
 
   return (
-    <main>
-      <nav>
-        <button onClick={() => setView('review')}>Review</button>
-        <button onClick={() => setView('add')}>Add</button>
+    <main className="app">
+      <nav className="nav">
+        <button className={view === 'review' ? 'active' : ''} onClick={() => setView('review')}>Review</button>
+        <button className={view === 'add' ? 'active' : ''} onClick={() => setView('add')}>Add</button>
       </nav>
       {view === 'review' ? (
         <>

@@ -30,7 +30,7 @@ export function AddExpressionForm() {
     }
     
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="form card" onSubmit={handleSubmit}>
             <label>
                 Expression
                 <input

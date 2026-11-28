@@ -42,18 +42,19 @@ export function ReviewSession() {
     const card = cards[index]
 
     return (
-        <div>
-            <p>{index + 1} / {cards.length}</p>
-            <p>{card.definition ?? 'No definition'}</p>
+        <div className="card">
+            <p className="progress">{index + 1} / {cards.length}</p>
+            <p className="definition">{card.definition}</p>
             
             {revealed ? (
                 <>
-                    <h2>{card.text}</h2>
-                    {card.example && <p><em>{card.example}</em></p>}
-                    <div>
+                    <h2 className="answer">{card.text}</h2>
+                    {card.example && <p className="example"><em>{card.example}</em></p>}
+                    <div className="ratings">
                         {RATINGS.map((r) => (
                             <button
                                 key={r.value}
+                                className={`rating-${r.value}`}
                                 disabled={submitting}
                                 onClick={() => handleRate(r.value)}
                             >
@@ -63,7 +64,7 @@ export function ReviewSession() {
                     </div>
                 </>
             ) : (
-                <button onClick={() => setRevealed(true)}>Show Answer</button>
+                <button className="show-answer" onClick={() => setRevealed(true)}>Show Answer</button>
             )}
         </div>
     )
